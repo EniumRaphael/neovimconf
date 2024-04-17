@@ -1,4 +1,3 @@
-
 "		   ██    ██ ██ ███    ███ ██████   ██████
 "		   ██    ██ ██ ████  ████ ██   ██ ██
 "		   ██    ██ ██ ██ ████ ██ ██████  ██
@@ -54,13 +53,13 @@ command! Xa :xa
 
 let mapleader=" "
 
-nnoremap <leader>T :FloatermNew --height=0.6 --width=0.4 --wintype=float --name=floaterm<cr>
+nnoremap <leader>t :FloatermNew --height=0.6 --width=0.4 --wintype=float --name=floaterm<cr>
 nnoremap <leader>w :w<cr>
-nnoremap <C-s> :w<cr>konsole
+nnoremap <C-s> :w<cr>
 nnoremap <leader>q :xa<cr>
 nnoremap <leader>b :Telescope buffers<cr>
 nnoremap <leader>f :Telescope find_files<cr>
-nnoremap <leader>t :Telescope<cr>
+nnoremap <leader>T :Telescope<cr>
 nnoremap <leader><space> : :Neotree toggle<cr>
 nnoremap <leader>o gT
 nnoremap <leader>p gt
@@ -76,6 +75,7 @@ inoremap º <Esc>:m .-2<CR>==gi
 
 vnoremap ª :m '>+1<CR>gv=gvnnoremap <leader>o gT
 vnoremap º :m '<-2<CR>gv=gv
+xnoremap <C-/> gc
 
 """""""""""""""""""""""""""""""""""""""""""""
 "              		 VIMPLUG 
@@ -92,7 +92,7 @@ onoremap ii ?if (<cr>jjdi{kkf(lci(
 
 call plug#begin()
 	Plug 'edkolev/tmuxline.vim'
-	Plug 'numToStr/Comment.nvim'
+	Plug 'EniumRaphael/Comment.nvim'
 	Plug 'sainnhe/edge'
 "	Plug 'ervandew/supertab'
 	Plug '42Paris/42header'
