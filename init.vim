@@ -75,7 +75,6 @@ inoremap º <Esc>:m .-2<CR>==gi
 
 vnoremap ª :m '>+1<CR>gv=gvnnoremap <leader>o gT
 vnoremap º :m '<-2<CR>gv=gv
-xnoremap <C-/> gc
 
 """""""""""""""""""""""""""""""""""""""""""""
 "              		 VIMPLUG 
