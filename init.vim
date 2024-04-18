@@ -21,7 +21,6 @@ set shiftwidth=4
 set tabstop=4
 set autoindent
 set smartindent
-set relativenumber
 set splitbelow
 set splitright
 set wildignorecase
@@ -36,7 +35,7 @@ command! W :w
 command! Q :q
 
 command! WA :wa
-command! wA :wa
+command! Wa :wa
 
 command! QA :qa
 command! Qa :qa
@@ -53,7 +52,7 @@ command! Xa :xa
 
 let mapleader=" "
 
-nnoremap <leader>t :FloatermNew --height=0.6 --width=0.4 --wintype=float --name=floaterm<cr>
+nnoremap <leader>t :FloatermNew --height=0.9 --width=0.8 --wintype=float --name=floaterm<cr>
 nnoremap <leader>w :w<cr>
 nnoremap <C-s> :w<cr>
 nnoremap <leader>q :xa<cr>
@@ -115,7 +114,7 @@ call plug#begin()
 	Plug 'ntpeters/vim-airline-colornum'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
-	Plug 'folke/tokyonight.nvim'
+	Plug 'shaunsingh/nord.nvim'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""
@@ -128,26 +127,25 @@ set list
 "					TOKYONIGHT
 """""""""""""""""""""""""""""""""""""""""""""
 
-colorscheme tokyonight
-let g:tokyonight_style = 'night'
-let g:tokyonight_italic_functions = true
+colorscheme nord
+" let g:tokyonight_italic_functions = true
 let g:tokyonight_sidebars = [ 'quickfix', '__vista__', 'terminal' ]
-let g:airline_theme = "tokyonight"
+let g:airline_theme = "base16_nord"
 
 """""""""""""""""""""""""""""""""""""""""""""
 "              		  COLOR CODED
 """""""""""""""""""""""""""""""""""""""""""""
 
 let g:color_coded_enabled = 1
-let g:color_coded_filetypes = ['c', 'cpp', 'objc']
+let g:color_coded_filetypes = ['c', 'cpp', 'objc', 'js', 'ts']
 
 """""""""""""""""""""""""""""""""""""""""""""
 "              		  SYNTASTIC
 """""""""""""""""""""""""""""""""""""""""""""
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*let g:syntastic_always_populate_loc_list = 1
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*let g:syntastic_always_populate_loc_list = 1
 
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -181,4 +179,36 @@ require('telescope').setup{
     }
   }
 }
+require("nord").setup({
+  on_highlights = function(hl, c)
+    local prompt = "#2d3149"
+    hl.TelescopeNormal = {
+      bg = c.bg_dark,
+      fg = c.fg_dark,
+    }
+    hl.TelescopeBorder = {
+      bg = c.bg_dark,
+      fg = c.bg_dark,
+    }
+    hl.TelescopePromptNormal = {
+      bg = prompt,
+    }
+    hl.TelescopePromptBorder = {
+      bg = prompt,
+      fg = prompt,
+    }
+    hl.TelescopePromptTitle = {
+      bg = prompt,
+      fg = prompt,
+    }
+    hl.TelescopePreviewTitle = {
+      bg = c.bg_dark,
+      fg = c.bg_dark,
+    }
+    hl.TelescopeResultsTitle = {
+      bg = c.bg_dark,
+      fg = c.bg_dark,
+    }
+"  end,
+})
 EOF
