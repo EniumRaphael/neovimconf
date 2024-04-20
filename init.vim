@@ -1,3 +1,4 @@
+	  "minilibx-linux"
 "		   ██    ██ ██ ███    ███ ██████   ██████
 "		   ██    ██ ██ ████  ████ ██   ██ ██
 "		   ██    ██ ██ ██ ████ ██ ██████  ██
@@ -52,28 +53,37 @@ command! Xa :xa
 
 let mapleader=" "
 
-nnoremap <leader>t :FloatermNew --height=0.9 --width=0.8 --wintype=float<cr>
-nnoremap <leader>w :w<cr>
+"		For leaving vim config
 nnoremap <C-s> :w<cr>
-nnoremap <leader>q :xa<cr>
+nnoremap <leader>w :w<cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>o gT
+nnoremap <leader>p gt
+
+"		To navigate between files
+nnoremap <leader><space> : :Neotree toggle<cr>
 nnoremap <leader>b :Telescope buffers<cr>
 nnoremap <leader>f :Telescope find_files<cr>
 nnoremap <leader>T :Telescope<cr>
-nnoremap <leader><space> : :Neotree toggle<cr>
-nnoremap <leader>o gT
-nnoremap <leader>p gt
+
+"		Some shortcut to be faster
 nnoremap <leader>m I#include <libc.h><cr><cr>int main(int ac, char **av)<cr>{<cr>}<esc>ko
+nnoremap <leader>t :FloatermNew --height=0.9 --width=0.8 --wintype=float<cr>
 nnoremap <leader>d :windo difft<cr>
 nnoremap <leader>do :diffo<cr>
-nnoremap ª :m .+1<CR>==
-nnoremap º :m .-2<CR>==nnoremap <leader>o gT
+
+"		For the header
 nnoremap <F1> = <cmd>:Stdheader<CR>
 
+"		Some random shortcut
+
+nnoremap ª :m .+1<CR>==
+nnoremap º :m .-2<CR>==nnoremap <leader>o gT
 inoremap ª <Esc>:m .+1<CR>==gi
 inoremap º <Esc>:m .-2<CR>==gi
-
 vnoremap ª :m '>+1<CR>gv=gvnnoremap <leader>o gT
 vnoremap º :m '<-2<CR>gv=gv
+onoremap ii ?if (<cr>jjdi{kkf(lci(
 
 """""""""""""""""""""""""""""""""""""""""""""
 "              		 VIMPLUG 
@@ -86,16 +96,13 @@ vnoremap º :m '<-2<CR>gv=gv
 "   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 " endif
 
-onoremap ii ?if (<cr>jjdi{kkf(lci(
-
 call plug#begin()
+	Plug 'shaunsingh/nord.nvim'
 	Plug 'edkolev/tmuxline.vim'
 	Plug 'EniumRaphael/Comment.nvim'
 	Plug 'sainnhe/edge'
-"	Plug 'ervandew/supertab'
 	Plug '42Paris/42header'
 	Plug 'MunifTanjim/nui.nvim'
-"	Plug 'VonHeikemen/fine-cmdline.nvim'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'voldikss/vim-floaterm'
@@ -114,11 +121,14 @@ call plug#begin()
 	Plug 'ntpeters/vim-airline-colornum'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
-	Plug 'shaunsingh/nord.nvim'
 	Plug 'folke/noice.nvim'
-    	Plug 'MunifTanjim/nui.nvim'
+	Plug 'MunifTanjim/nui.nvim'
 	Plug 'rcarriga/nvim-notify'
 call plug#end()
+
+"		Some Plugins not use any more
+"	Plug 'VonHeikemen/fine-cmdline.nvim'
+"	Plug 'ervandew/supertab'
 
 """""""""""""""""""""""""""""""""""""""""""""
 "					See Char
@@ -128,12 +138,10 @@ set listchars=tab:▸\ ,eol:¬
 set list
 
 """""""""""""""""""""""""""""""""""""""""""""
-"					TOKYONIGHT
+"					ColorScheme
 """""""""""""""""""""""""""""""""""""""""""""
 
 colorscheme nord
-" let g:tokyonight_italic_functions = true
-let g:tokyonight_sidebars = [ 'quickfix', '__vista__', 'terminal' ]
 let g:airline_theme = "base16_nord"
 
 """""""""""""""""""""""""""""""""""""""""""""
@@ -141,16 +149,16 @@ let g:airline_theme = "base16_nord"
 """""""""""""""""""""""""""""""""""""""""""""
 
 let g:color_coded_enabled = 1
-let g:color_coded_filetypes = ['c', 'cpp', 'objc', 'js', 'ts']
+let g:color_coded_filetypes = ['c', 'cpp', 'objc', 'js', 'ts', 'lua']
 
 """""""""""""""""""""""""""""""""""""""""""""
 "              		  SYNTASTIC
 """""""""""""""""""""""""""""""""""""""""""""
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
 
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -175,7 +183,7 @@ require('telescope').setup{
     file_ignore_patterns = { 
       "node_modules",
 	  "objects",
-	  "object"
+	  "object",
     }
   }
 }
