@@ -79,12 +79,12 @@ vnoremap º :m '<-2<CR>gv=gv
 "              		 VIMPLUG 
 """""""""""""""""""""""""""""""""""""""""""""
 
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+" let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+" if empty(glob(data_dir . '/autoload/plug.vim'))
+"   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" endif
 
 onoremap ii ?if (<cr>jjdi{kkf(lci(
 
@@ -145,7 +145,8 @@ let g:color_coded_filetypes = ['c', 'cpp', 'objc', 'js', 'ts']
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*let g:syntastic_always_populate_loc_list = 1
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
 
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -179,36 +180,4 @@ require('telescope').setup{
     }
   }
 }
-require("nord").setup({
-  on_highlights = function(hl, c)
-    local prompt = "#2d3149"
-    hl.TelescopeNormal = {
-      bg = c.bg_dark,
-      fg = c.fg_dark,
-    }
-    hl.TelescopeBorder = {
-      bg = c.bg_dark,
-      fg = c.bg_dark,
-    }
-    hl.TelescopePromptNormal = {
-      bg = prompt,
-    }
-    hl.TelescopePromptBorder = {
-      bg = prompt,
-      fg = prompt,
-    }
-    hl.TelescopePromptTitle = {
-      bg = prompt,
-      fg = prompt,
-    }
-    hl.TelescopePreviewTitle = {
-      bg = c.bg_dark,
-      fg = c.bg_dark,
-    }
-    hl.TelescopeResultsTitle = {
-      bg = c.bg_dark,
-      fg = c.bg_dark,
-    }
-"  end,
-})
 EOF
