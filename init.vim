@@ -52,7 +52,7 @@ command! Xa :xa
 
 let mapleader=" "
 
-nnoremap <leader>t :FloatermNew --height=0.9 --width=0.8 --wintype=float --name=floaterm<cr>
+nnoremap <leader>t :FloatermNew --height=0.9 --width=0.8 --wintype=float --cmd="zsh"<cr>
 nnoremap <leader>w :w<cr>
 nnoremap <C-s> :w<cr>
 nnoremap <leader>q :xa<cr>
@@ -95,7 +95,7 @@ call plug#begin()
 "	Plug 'ervandew/supertab'
 	Plug '42Paris/42header'
 	Plug 'MunifTanjim/nui.nvim'
-	Plug 'VonHeikemen/fine-cmdline.nvim'
+	" Plug 'VonHeikemen/fine-cmdline.nvim'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'voldikss/vim-floaterm'
@@ -115,9 +115,13 @@ call plug#begin()
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
 	Plug 'shaunsingh/nord.nvim'
+	Plug 'folke/noice.nvim'
+    Plug 'MunifTanjim/nui.nvim'
+	Plug 'rcarriga/nvim-notify'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""
+"					See Char
 """""""""""""""""""""""""""""""""""""""""""""
 
 set listchars=tab:▸\ ,eol:¬
@@ -163,13 +167,14 @@ set cursorline
 "              		 CMD-LINE 
 """""""""""""""""""""""""""""""""""""""""""""
 
-nnoremap : <cmd>FineCmdline<CR>
+"/ nnoremap : <cmd>Noice<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""
 "              		 COMMENTS 
 """""""""""""""""""""""""""""""""""""""""""""
 
 lua << EOF
+require("noice").setup()
 require('Comment').setup()
 require('telescope').setup{ 
   defaults = { 
