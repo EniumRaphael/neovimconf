@@ -55,7 +55,7 @@ let mapleader=" "
 "		For leaving vim config
 nnoremap <C-s> :w<cr>
 nnoremap <leader>w :w<cr>
-nnoremap <leader>q :q<cr>
+nnoremap <leader>q 
 nnoremap <leader>o gT
 nnoremap <leader>p gt
 
