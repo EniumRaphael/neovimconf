@@ -1,4 +1,4 @@
-"		   ██    ██ ██ ███    ███ ██████   ██████
+""		   ██    ██ ██ ███    ███ ██████   ██████
 "		   ██    ██ ██ ████  ████ ██   ██ ██
 "		   ██    ██ ██ ██ ████ ██ ██████  ██
 "		    ██  ██  ██ ██  ██  ██ ██   ██ ██
@@ -53,11 +53,20 @@ command! Xa :xa
 let mapleader=" "
 
 "		For leaving vim config
-nnoremap <C-s> :w<cr>
-nnoremap <leader>w :w<cr>
+nnoremap <C-s> :wa<cr>
+nnoremap <leader>w :wa<cr>
 nnoremap <leader>q 
+nnoremap <leader>Q :q<cr>
 nnoremap <leader>o gT
 nnoremap <leader>p gt
+
+"		For Copilot
+nnoremap <leader>X :Copilot disable<cr>
+nnoremap <leader>Z :Copilot enable<cr>
+
+"		For buffer
+nnoremap <leader>v :vsplit<cr>
+nnoremap <leader>h :split<cr>
 
 "		To navigate between files
 nnoremap <leader><space> : :Neotree toggle<cr>
@@ -113,6 +122,8 @@ call plug#begin()
 	Plug 'hrsh7th/cmp-cmdline'
 	Plug 'hrsh7th/nvim-cmp'
 	Plug 'myusuf3/numbers.vim'
+	Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+	Plug 'folke/trouble.nvim'
 	Plug 'scrooloose/syntastic'
 	Plug 'nvim-neo-tree/neo-tree.nvim'
 	Plug 'nvim-lua/plenary.nvim'
@@ -122,6 +133,7 @@ call plug#begin()
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
 	Plug 'folke/noice.nvim'
 	Plug 'MunifTanjim/nui.nvim'
+	Plug 'github/copilot.vim'
 	Plug 'rcarriga/nvim-notify'
 call plug#end()
 
@@ -141,6 +153,7 @@ set list
 """""""""""""""""""""""""""""""""""""""""""""
 
 colorscheme nord
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = "base16_nord"
 
 """""""""""""""""""""""""""""""""""""""""""""
@@ -157,8 +170,8 @@ let g:color_coded_filetypes = ['c', 'cpp', 'objc', 'js', 'ts', 'lua']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
 
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
@@ -174,8 +187,9 @@ set cursorline
 "              		 COMMENTS 
 """""""""""""""""""""""""""""""""""""""""""""
 
+
 lua << EOF
-require("noice").setup()
+require('noice').setup()
 require('Comment').setup()
 require('telescope').setup{ 
   defaults = { 
