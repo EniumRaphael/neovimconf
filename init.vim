@@ -1,4 +1,3 @@
-""		   ██    ██ ██ ███    ███ ██████   ██████
 "		   ██    ██ ██ ████  ████ ██   ██ ██
 "		   ██    ██ ██ ██ ████ ██ ██████  ██
 "		    ██  ██  ██ ██  ██  ██ ██   ██ ██
@@ -57,6 +56,18 @@ nnoremap <C-s> :wa<cr>
 nnoremap <leader>w :wa<cr>
 nnoremap <leader>q 
 nnoremap <leader>Q :q<cr>
+
+"		For moving between windows
+nnoremap <leader>1 :1tabnext<cr>
+nnoremap <leader>2 :2tabnext<cr>
+nnoremap <leader>3 :3tabnext<cr>
+nnoremap <leader>4 :4tabnext<cr>
+nnoremap <leader>5 :5tabnext<cr>
+nnoremap <leader>6 :6tabnext<cr>
+nnoremap <leader>7 :7tabnext<cr>
+nnoremap <leader>8 :8tabnext<cr>
+nnoremap <leader>9 :9tabnext<cr>
+nnoremap <leader>0 :10tabnext<cr>
 nnoremap <leader>o gT
 nnoremap <leader>p gt
 
@@ -70,14 +81,17 @@ nnoremap <leader>h :split<cr>
 
 "		To navigate between files
 nnoremap <leader><space> : :Neotree toggle<cr>
-nnoremap <leader>b :Telescope buffers<cr>
-nnoremap <leader>f :Telescope find_files<cr>
+nnoremap <leader>b :Telescope buffers prompt_prefix=📂:<cr>
+nnoremap <leader>g :Telescope live_grep prompt_prefix=🪄:<cr>
+nnoremap <leader>f :Telescope find_files prompt_prefix=🔖:<cr>
 nnoremap <leader>T :Telescope<cr>
 
 "		Some shortcut to be faster
-nnoremap <leader>m I#include <libc.h><cr><cr>int main(int ac, char **av)<cr>{<cr>}<esc>ko
+nnoremap <leader>m :!make -j<cr>
+nnoremap <leader>d :GdbStartLLDB lldb 
+nnoremap <leader>M I#include <libc.h><cr><cr>int main(int ac, char **av)<cr>{<cr>}<esc>ko
 nnoremap <leader>t :FloatermNew --height=0.9 --width=0.8 --wintype=float<cr>
-nnoremap <leader>d :windo difft<cr>
+nnoremap <leader>dd :windo difft<cr>
 nnoremap <leader>do :diffo<cr>
 
 "		For the header
@@ -105,7 +119,10 @@ onoremap ii ?if (<cr>jjdi{kkf(lci(
 " endif
 
 call plug#begin()
-	Plug 'shaunsingh/nord.nvim'
+	Plug 'ribru17/bamboo.nvim'
+    Plug 'sakhnik/nvim-gdb'
+	Plug 'nvim-tree/nvim-web-devicons'
+	Plug 'nvim-lua/plenary.nvim'
 	Plug 'edkolev/tmuxline.vim'
 	Plug 'EniumRaphael/Comment.nvim'
 	Plug 'sainnhe/edge'
@@ -152,9 +169,9 @@ set list
 "					ColorScheme
 """""""""""""""""""""""""""""""""""""""""""""
 
-colorscheme nord
+colorscheme bamboo
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = "base16_nord"
+let g:airline_theme = "base16_atelier_forest"
 
 """""""""""""""""""""""""""""""""""""""""""""
 "              		  COLOR CODED
@@ -191,6 +208,7 @@ set cursorline
 lua << EOF
 require('noice').setup()
 require('Comment').setup()
+require('alpha').setup(require('alpha.themes.dashboard').config)
 require('telescope').setup{ 
   defaults = { 
     file_ignore_patterns = { 
