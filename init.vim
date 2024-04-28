@@ -87,7 +87,9 @@ nnoremap <leader>f :Telescope find_files prompt_prefix=🔖:<cr>
 nnoremap <leader>T :Telescope<cr>
 
 "		Some shortcut to be faster
+nnoremap <leader>F :!find . -name "*.c" >> ./Makefile<cr>
 nnoremap <leader>m :!make -j<cr>
+nnoremap <leader>c :!copen<cr>
 nnoremap <leader>d :GdbStartLLDB lldb 
 nnoremap <leader>M I#include <libc.h><cr><cr>int main(int ac, char **av)<cr>{<cr>}<esc>ko
 nnoremap <leader>t :FloatermNew --height=0.9 --width=0.8 --wintype=float<cr>
