@@ -90,6 +90,7 @@ nnoremap <leader>f :Telescope find_files prompt_prefix=🔖:<cr>
 nnoremap <leader>T :Telescope<cr>
 
 "		Some shortcut to be faster
+nnoremap <leader>N :!norminette
 nnoremap <leader>F :!find . -name "*.c" >> ./Makefile<cr>
 nnoremap <leader>m :!make -j<cr>
 nnoremap <leader>c :!copen<cr>
