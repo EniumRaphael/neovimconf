@@ -1,7 +1,9 @@
-"		   ██    ██ ██ ████  ████ ██   ██ ██
-"		   ██    ██ ██ ██ ████ ██ ██████  ██
-"		    ██  ██  ██ ██  ██  ██ ██   ██ ██
-"		██   ████   ██ ██      ██ ██   ██  ██████
+"   ██    ██ ██ ███    ███ ██████   ██████
+"   ██    ██ ██ ████  ████ ██   ██ ██
+"   ██    ██ ██ ██ ████ ██ ██████  ██
+"    ██  ██  ██ ██  ██  ██ ██   ██ ██
+"██   ████   ██ ██      ██ ██   ██  ██████
+
 
 """""""""""""""""""""""""""""""""""""""""""""
 " 				CLASSIC CONFIG 
@@ -68,6 +70,7 @@ nnoremap <leader>7 :7tabnext<cr>
 nnoremap <leader>8 :8tabnext<cr>
 nnoremap <leader>9 :9tabnext<cr>
 nnoremap <leader>0 :10tabnext<cr>
+nnoremap <leader>n :tabnew<cr>
 nnoremap <leader>o gT
 nnoremap <leader>p gt
 
@@ -210,7 +213,6 @@ set cursorline
 lua << EOF
 require('noice').setup()
 require('Comment').setup()
-require('alpha').setup(require('alpha.themes.dashboard').config)
 require('telescope').setup{ 
   defaults = { 
     file_ignore_patterns = { 
