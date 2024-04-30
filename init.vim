@@ -95,7 +95,7 @@ nnoremap <leader>F :!find . -name "*.c" >> ./Makefile<cr>
 nnoremap <leader>m :!make -j<cr>
 nnoremap <leader>c :!copen<cr>
 nnoremap <leader>d :GdbStartLLDB lldb 
-nnoremap <leader>M I#include <libc.h><cr><cr>int main(int ac, char **av)<cr>{<cr>}<esc>ko
+nnoremap <leader>M I#include <libc.h><cr><cr>int main(int argc, char *argv[], char *evnp[])<cr>{<cr>}<esc>ko
 nnoremap <leader>t :FloatermNew --height=0.9 --width=0.8 --wintype=float<cr>
 nnoremap <leader>dd :windo difft<cr>
 nnoremap <leader>do :diffo<cr>
@@ -130,6 +130,7 @@ call plug#begin()
 	Plug 'nvim-tree/nvim-web-devicons'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'edkolev/tmuxline.vim'
+	Plug 'p00f/clangd_extensions.nvim'
 	Plug 'EniumRaphael/Comment.nvim'
 	Plug 'sainnhe/edge'
 	Plug '42Paris/42header'
