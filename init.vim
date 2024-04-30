@@ -54,6 +54,7 @@ command! Xa :xa
 let mapleader=" "
 
 "		For leaving vim config
+inoremap <C-s> <Esc>:wa<cr>i
 nnoremap <C-s> :wa<cr>
 nnoremap <leader>w :wa<cr>
 nnoremap <leader>q 
