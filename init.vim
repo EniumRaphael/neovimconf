@@ -131,11 +131,12 @@ call plug#begin()
 	Plug 'nvim-tree/nvim-web-devicons'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'edkolev/tmuxline.vim'
-	Plug 'p00f/clangd_extensions.nvim'
 	Plug 'EniumRaphael/Comment.nvim'
 	Plug 'sainnhe/edge'
+	Plug 'rafamadriz/friendly-snippets'
 	Plug '42Paris/42header'
 	Plug 'MunifTanjim/nui.nvim'
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'voldikss/vim-floaterm'
@@ -212,6 +213,11 @@ set cursorline
 "              		 COMMENTS 
 """""""""""""""""""""""""""""""""""""""""""""
 
+autocmd VimEnter * TSToggle highlight 
+autocmd BufEnter * lua require'completion'.on_attach()
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
 
 lua << EOF
 require('noice').setup()
@@ -225,4 +231,25 @@ require('telescope').setup{
     }
   }
 }
+local cmp = require'cmp'
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      -- For `vim-vsnip` integration, for example
+      vim.fn["vsnip#anonymous"](args.body) 
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-1),
+    ['<C-f>'] = cmp.mapping.scroll_docs(1),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' }, -- For snippet support
+    { name = 'buffer' },
+  })
+})
 EOF
