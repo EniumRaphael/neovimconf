@@ -214,7 +214,6 @@ set cursorline
 """""""""""""""""""""""""""""""""""""""""""""
 
 autocmd VimEnter * TSToggle highlight 
-autocmd BufEnter * lua require'completion'.on_attach()
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
@@ -235,7 +234,6 @@ local cmp = require'cmp'
 cmp.setup({
   snippet = {
     expand = function(args)
-      -- For `vim-vsnip` integration, for example
       vim.fn["vsnip#anonymous"](args.body) 
     end,
   },
@@ -244,11 +242,11 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(1),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-Enter>'] = cmp.mapping.confirm({ select = true }),
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'vsnip' }, -- For snippet support
+    { name = 'vsnip' },
     { name = 'buffer' },
   })
 })
