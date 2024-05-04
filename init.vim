@@ -140,18 +140,24 @@ call plug#begin()
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'voldikss/vim-floaterm'
-	Plug 'prabirshrestha/vim-lsp'
+	Plug 'williamboman/mason-lspconfig.nvim'
 	Plug 'neovim/nvim-lspconfig'
+	Plug 'hrsh7th/nvim-cmp'
 	Plug 'hrsh7th/cmp-nvim-lsp'
 	Plug 'hrsh7th/cmp-buffer'
 	Plug 'hrsh7th/cmp-path'
 	Plug 'hrsh7th/cmp-cmdline'
-	Plug 'hrsh7th/nvim-cmp'
+	Plug 'L3MON4D3/LuaSnip'
+	Plug 'rafamadriz/friendly-snippets'
+	Plug 'saadparwaiz1/cmp_luasnip'
+	Plug 'williamboman/mason.nvim'
 	Plug 'myusuf3/numbers.vim'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 	Plug 'folke/trouble.nvim'
 	Plug 'scrooloose/syntastic'
 	Plug 'nvim-neo-tree/neo-tree.nvim'
+	Plug 'williamboman/mason-lspconfig.nvim'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-tree/nvim-web-devicons'
 	Plug 'ntpeters/vim-airline-colornum'
@@ -183,26 +189,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = "base16_atelier_forest"
 
 """""""""""""""""""""""""""""""""""""""""""""
-"              		  COLOR CODED
-"""""""""""""""""""""""""""""""""""""""""""""
-
-let g:color_coded_enabled = 1
-let g:color_coded_filetypes = ['c', 'cpp', 'objc', 'js', 'ts', 'lua']
-
-"""""""""""""""""""""""""""""""""""""""""""""
-"              		  SYNTASTIC
-"""""""""""""""""""""""""""""""""""""""""""""
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-"""""""""""""""""""""""""""""""""""""""""""""
 "              		  CURSORLINE
 """""""""""""""""""""""""""""""""""""""""""""
 
@@ -210,17 +196,24 @@ let g:airline_colornum_enabled = 1
 set cursorline
 
 """""""""""""""""""""""""""""""""""""""""""""
-"              		 COMMENTS 
+"              		 PATH
 """""""""""""""""""""""""""""""""""""""""""""
 
-autocmd VimEnter * TSToggle highlight 
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-set completeopt=menuone,noinsert,noselect
-set shortmess+=c
+let g:coc_node_path = '/home/rparodi/.nvm/versions/node/v22.1.0/bin/node'
+let g:copilot_node_path = '/home/rparodi/.nvm/versions/node/v22.1.0/bin/node'
+let g:tagbar_ctags_bin = '/usr/bin/ctags'
+
+"""""""""""""""""""""""""""""""""""""""""""""
+"              		 COLOR
+"""""""""""""""""""""""""""""""""""""""""""""
+
+autocmd VimEnter * TSToggle highlight
 
 lua << EOF
 require('noice').setup()
+
 require('Comment').setup()
+
 require('telescope').setup{ 
   defaults = { 
     file_ignore_patterns = { 
@@ -230,24 +223,48 @@ require('telescope').setup{
     }
   }
 }
+
+require("mason").setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
+
 local cmp = require'cmp'
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) 
-    end,
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-1),
-    ['<C-f>'] = cmp.mapping.scroll_docs(1),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<C-Enter>'] = cmp.mapping.confirm({ select = true }),
-  }),
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-    { name = 'buffer' },
-  })
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+        end,
+    },
+    mapping = cmp.mapping.preset.insert({
+        ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<Left>'] = cmp.mapping.abort(),
+        ['<Right>'] = cmp.mapping.confirm({ select = true }),
+    }),
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+        { name = 'buffer', keyword_length = 4 },
+        { name = 'path' }
+    })
+})
+require('lspconfig').clangd.setup({
+    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    on_attach = function(client, bufnr)
+        local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+        local opts = { noremap=true, silent=true }
+        -- Binding LSP functions to keys
+        buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+        buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    end
 })
 EOF
