@@ -126,7 +126,7 @@ onoremap ii ?if (<cr>jjdi{kkf(lci(
 " endif
 
 call plug#begin()
-	Plug 'ribru17/bamboo.nvim'
+	Plug 'rmehri01/onenord.nvim'
     Plug 'sakhnik/nvim-gdb'
 	Plug 'nvim-tree/nvim-web-devicons'
 	Plug 'nvim-lua/plenary.nvim'
@@ -160,7 +160,7 @@ call plug#begin()
 	Plug 'williamboman/mason-lspconfig.nvim'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-tree/nvim-web-devicons'
-	Plug 'ntpeters/vim-airline-colornum'
+	" Plug 'ntpeters/vim-airline-colornum'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
 	Plug 'folke/noice.nvim'
@@ -184,9 +184,9 @@ set list
 "					ColorScheme
 """""""""""""""""""""""""""""""""""""""""""""
 
-colorscheme bamboo
+colorscheme onenord
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = "base16_atelier_forest"
+let g:airline_theme = "nord_minimal"
 
 """""""""""""""""""""""""""""""""""""""""""""
 "              		  CURSORLINE
