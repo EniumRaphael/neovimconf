@@ -1,8 +1,8 @@
-"   ██    ██ ██ ███    ███ ██████   ██████
-"   ██    ██ ██ ████  ████ ██   ██ ██
-"   ██    ██ ██ ██ ████ ██ ██████  ██
-"    ██  ██  ██ ██  ██  ██ ██   ██ ██
-"██   ████   ██ ██      ██ ██   ██  ██████
+"	██    ██ ██ ███    ███ ██████   ██████
+"	██    ██ ██ ████  ████ ██   ██ ██
+"	██    ██ ██ ██ ████ ██ ██████  ██
+"	 ██  ██  ██ ██  ██  ██ ██   ██ ██
+"██	  ████   ██ ██      ██ ██   ██  ██████
 
 
 """""""""""""""""""""""""""""""""""""""""""""
@@ -131,7 +131,7 @@ call plug#begin()
 	Plug 'nvim-tree/nvim-web-devicons'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'edkolev/tmuxline.vim'
-	Plug 'EniumRaphael/Comment.nvim'
+	Plug 'numToStr/Comment.nvim'
 	Plug 'sainnhe/edge'
 	Plug 'rafamadriz/friendly-snippets'
 	Plug '42Paris/42header'
@@ -147,12 +147,12 @@ call plug#begin()
 	Plug 'hrsh7th/cmp-buffer'
 	Plug 'hrsh7th/cmp-path'
 	Plug 'hrsh7th/cmp-cmdline'
+	Plug 'ray-x/lsp_signature.nvim'
 	Plug 'L3MON4D3/LuaSnip'
 	Plug 'rafamadriz/friendly-snippets'
 	Plug 'saadparwaiz1/cmp_luasnip'
 	Plug 'williamboman/mason.nvim'
 	Plug 'myusuf3/numbers.vim'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 	Plug 'folke/trouble.nvim'
 	Plug 'scrooloose/syntastic'
@@ -160,7 +160,7 @@ call plug#begin()
 	Plug 'williamboman/mason-lspconfig.nvim'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-tree/nvim-web-devicons'
-	" Plug 'ntpeters/vim-airline-colornum'
+	Plug 'ntpeters/vim-airline-colornum'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
 	Plug 'folke/noice.nvim'
@@ -209,30 +209,14 @@ let g:tagbar_ctags_bin = '/usr/bin/ctags'
 
 autocmd VimEnter * TSToggle highlight
 
+lua require('lsp_config').setup()
+lua require('noice_config').setup()
+lua require('comment_config').setup()
+lua require('telescope_config').setup()
+lua require('lsp_signature_config').setup()
+lua require('mason_config').setup()
+
 lua << EOF
-require('noice').setup()
-
-require('Comment').setup()
-
-require('telescope').setup{ 
-  defaults = { 
-    file_ignore_patterns = { 
-      "node_modules",
-	  "objects",
-	  "object",
-    }
-  }
-}
-
-require("mason").setup({
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
-        }
-    }
-})
 
 local cmp = require'cmp'
 cmp.setup({
@@ -257,14 +241,6 @@ cmp.setup({
         { name = 'path' }
     })
 })
-require('lspconfig').clangd.setup({
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    on_attach = function(client, bufnr)
-        local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-        local opts = { noremap=true, silent=true }
-        -- Binding LSP functions to keys
-        buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-        buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    end
-})
+
+
 EOF
