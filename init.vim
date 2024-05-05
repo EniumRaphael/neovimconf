@@ -117,13 +117,6 @@ onoremap ii ?if (<cr>jjdi{kkf(lci(
 "              		 VIMPLUG 
 """""""""""""""""""""""""""""""""""""""""""""
 
-" let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-
-" if empty(glob(data_dir . '/autoload/plug.vim'))
-"   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-" endif
-
 call plug#begin()
 	Plug 'AlexvZyl/nordic.nvim', { 'branch': 'main' }
 	Plug 'numToStr/FTerm.nvim'
@@ -208,8 +201,7 @@ set cursorline
 "              		 PATH
 """""""""""""""""""""""""""""""""""""""""""""
 
-let g:copilot_node_path = '/home/rparodi/.nvm/versions/node/v22.1.0/bin/node'
-let g:tagbar_ctags_bin = '/usr/bin/ctags'
+let g:copilot_node_path = '~/.nvm/versions/node/v22.1.0/bin/node'
 
 """""""""""""""""""""""""""""""""""""""""""""
 "              		 COLOR
