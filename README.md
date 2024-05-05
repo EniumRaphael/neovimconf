@@ -43,7 +43,7 @@ This configuration includes several key mappings designed to enhance productivit
   - `<leader>dd`: Diff this window.
   - `<leader>do`: Diff obtain.
   - `Ctrl+/`: Comment single lines.
-  - `<space>+/: Comment in blocks.
+  - `<space>+/`: Comment in blocks.
 
 - **Plugin Specific**:
   - `<leader>X`: Disable Copilot.
