@@ -1,5 +1,6 @@
-local cmp_config = require('cmp')
+local cmp = require('cmp')
 
+local cmp_config = {}
 function cmp_config.setup()
 	require('cmp').setup({
 		snippet = {
@@ -7,16 +8,16 @@ function cmp_config.setup()
 				require('luasnip').lsp_expand(args.body)
 			end,
 		},
-		mapping = cmp_config.mapping.preset.insert({
-			['<Down>'] = cmp_config.mapping.select_next_item({ behavior = cmp_config.SelectBehavior.Insert }),
-			['<Up>'] = cmp_config.mapping.select_prev_item({ behavior = cmp_config.SelectBehavior.Insert }),
-			['<C-d>'] = cmp_config.mapping.scroll_docs(-4),
-			['<C-f>'] = cmp_config.mapping.scroll_docs(4),
-			['<C-Space>'] = cmp_config.mapping.complete(),
-			['<Left>'] = cmp_config.mapping.abort(),
-			['<Right>'] = cmp_config.mapping.confirm({ select = true }),
+		mapping = cmp.mapping.preset.insert({
+			['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+			['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+			['<C-d>'] = cmp.mapping.scroll_docs(-4),
+			['<C-f>'] = cmp.mapping.scroll_docs(4),
+			['<C-Space>'] = cmp.mapping.complete(),
+			['<Left>'] = cmp.mapping.abort(),
+			['<Right>'] = cmp.mapping.confirm({ select = true }),
 		}),
-		sources = cmp_config.config.sources({
+		sources = cmp.config.sources({
 			{ name = 'nvim_lsp' },
 			{ name = 'luasnip' },
 			{ name = 'buffer', keyword_length = 4 },

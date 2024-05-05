@@ -31,21 +31,21 @@ set scrolloff=3
 " 				Alias for MAJ 
 """""""""""""""""""""""""""""""""""""""""""""
 
-command! W :w
+command! W <cmd>w
 
-command! Q :q
+command! Q <cmd>q
 
-command! WA :wa
-command! Wa :wa
+command! WA <cmd>wa
+command! Wa <cmd>wa
 
-command! QA :qa
-command! Qa :qa
+command! QA <cmd>qa
+command! Qa <cmd>qa
 
-command! WQ :wq
-command! Wq :wq
+command! WQ <cmd>wq
+command! Wq <cmd>wq
 
-command! XA :xa
-command! Xa :xa
+command! XA <cmd>xa
+command! Xa <cmd>xa
 
 """""""""""""""""""""""""""""""""""""""""""""
 " 				MapLeader 
@@ -54,64 +54,63 @@ command! Xa :xa
 let mapleader=" "
 
 "		For leaving vim config
-inoremap <C-s> <Esc>:wa<cr>i
-nnoremap <C-s> :wa<cr>
-nnoremap <leader>w :wa<cr>
+inoremap <C-s> <cmd>wa<cr>
+nnoremap <C-s> <cmd>wa<cr>
+nnoremap <leader>w <cmd>wa<cr>
 nnoremap <leader>q 
-nnoremap <leader>Q :q<cr>
+nnoremap <leader>Q <cmd>q<cr>
 
 "		For moving between windows
-nnoremap <leader>1 :1tabnext<cr>
-nnoremap <leader>2 :2tabnext<cr>
-nnoremap <leader>3 :3tabnext<cr>
-nnoremap <leader>4 :4tabnext<cr>
-nnoremap <leader>5 :5tabnext<cr>
-nnoremap <leader>6 :6tabnext<cr>
-nnoremap <leader>7 :7tabnext<cr>
-nnoremap <leader>8 :8tabnext<cr>
-nnoremap <leader>9 :9tabnext<cr>
-nnoremap <leader>0 :10tabnext<cr>
-nnoremap <leader>n :tabnew<cr>
+nnoremap <leader>1 <cmd>1tabnext<cr>
+nnoremap <leader>2 <cmd>2tabnext<cr>
+nnoremap <leader>3 <cmd>3tabnext<cr>
+nnoremap <leader>4 <cmd>4tabnext<cr>
+nnoremap <leader>5 <cmd>5tabnext<cr>
+nnoremap <leader>6 <cmd>6tabnext<cr>
+nnoremap <leader>7 <cmd>7tabnext<cr>
+nnoremap <leader>8 <cmd>8tabnext<cr>
+nnoremap <leader>9 <cmd>9tabnext<cr>
+nnoremap <leader>0 <cmd>10tabnext<cr>
+nnoremap <leader>n <cmd>tabnew<cr>
 nnoremap <leader>o gT
 nnoremap <leader>p gt
 
 "		For Copilot
-nnoremap <leader>X :Copilot disable<cr>
-nnoremap <leader>Z :Copilot enable<cr>
+nnoremap <leader>X <cmd>Copilot disable<cr>
+nnoremap <leader>Z <cmd>Copilot enable<cr>
 
 "		For buffer
-nnoremap <leader>v :vsplit<cr>
-nnoremap <leader>h :split<cr>
+nnoremap <leader>v <cmd>vsplit<cr>
+nnoremap <leader>h <cmd>split<cr>
 
 "		To navigate between files
-nnoremap <leader><space> : :Neotree toggle<cr>
-nnoremap <leader>b :Telescope buffers prompt_prefix=📂:<cr>
-nnoremap <leader>g :Telescope live_grep prompt_prefix=🪄:<cr>
-nnoremap <leader>f :Telescope find_files prompt_prefix=🔖:<cr>
-nnoremap <leader>T :Telescope<cr>
+nnoremap <leader><space> <cmd>Neotree toggle<cr>
+nnoremap <leader>b <cmd>Telescope buffers prompt_prefix=📂:<cr>
+nnoremap <leader>g <cmd>Telescope live_grep prompt_prefix=🪄:<cr>
+nnoremap <leader>f <cmd>Telescope find_files prompt_prefix=🔖:<cr>
+nnoremap <leader>T <cmd>Telescope<cr>
 
 "		Some shortcut to be faster
-nnoremap <leader>N :!norminette
-nnoremap <leader>F :!find . -name "*.c" >> ./Makefile<cr>
-nnoremap <leader>m :!make -j<cr>
-nnoremap <leader>c :!copen<cr>
+nnoremap <leader>N <cmd>!norminette
+nnoremap <leader>F <cmd>!find . -name "*.c" >> ./Makefile<cr>
+nnoremap <leader>m <cmd>!make -j<cr>
+nnoremap <leader>c <cmd>!copen<cr>
 nnoremap <leader>d :GdbStartLLDB lldb 
 nnoremap <leader>M I#include <libc.h><cr><cr>int main(int argc, char *argv[], char *evnp[])<cr>{<cr>}<esc>ko
-nnoremap <leader>t :FloatermNew --height=0.9 --width=0.8 --wintype=float<cr>
-nnoremap <leader>dd :windo difft<cr>
-nnoremap <leader>do :diffo<cr>
+nnoremap <leader>t <cmd>lua require("FTerm").toggle()<cr>
+nnoremap <leader>dd <cmd>windo difft<cr>
+nnoremap <leader>do <cmd>diffo<cr>
 
 "		For the header
-nnoremap <F1> = <cmd>:Stdheader<CR>
+nnoremap <F1> = <cmd><cmd>Stdheader<CR>
 
 "		Some random shortcut
-
-nnoremap ª :m .+1<CR>==
-nnoremap º :m .-2<CR>==nnoremap <leader>o gT
-inoremap ª <Esc>:m .+1<CR>==gi
-inoremap º <Esc>:m .-2<CR>==gi
-vnoremap ª :m '>+1<CR>gv=gvnnoremap <leader>o gT
-vnoremap º :m '<-2<CR>gv=gv
+nnoremap ª <cmd>m .+1<CR>==
+nnoremap º <cmd>m .-2<CR>==nnoremap <leader>o gT
+inoremap ª <Esc><cmd>m .+1<CR>==gi
+inoremap º <Esc><cmd>m .-2<CR>==gi
+vnoremap ª <cmd>m '>+1<CR>gv=gvnnoremap <leader>o gT
+vnoremap º <cmd>m '<-2<CR>gv=gv
 onoremap ii ?if (<cr>jjdi{kkf(lci(
 
 """""""""""""""""""""""""""""""""""""""""""""
@@ -126,8 +125,9 @@ onoremap ii ?if (<cr>jjdi{kkf(lci(
 " endif
 
 call plug#begin()
-	Plug 'rmehri01/onenord.nvim'
-    Plug 'sakhnik/nvim-gdb'
+	Plug 'AlexvZyl/nordic.nvim', { 'branch': 'main' }
+	Plug 'numToStr/FTerm.nvim'
+	Plug 'sakhnik/nvim-gdb'
 	Plug 'nvim-tree/nvim-web-devicons'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'edkolev/tmuxline.vim'
@@ -158,7 +158,6 @@ call plug#begin()
 	Plug 'scrooloose/syntastic'
 	Plug 'nvim-neo-tree/neo-tree.nvim'
 	Plug 'williamboman/mason-lspconfig.nvim'
-	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-tree/nvim-web-devicons'
 	Plug 'ntpeters/vim-airline-colornum'
 	Plug 'nvim-lua/plenary.nvim'
@@ -169,9 +168,19 @@ call plug#begin()
 	Plug 'rcarriga/nvim-notify'
 call plug#end()
 
-"		Some Plugins not use any more
-"	Plug 'VonHeikemen/fine-cmdline.nvim'
-"	Plug 'ervandew/supertab'
+"""""""""""""""""""""""""""""""""""""""""""""
+"					Loading lua
+"""""""""""""""""""""""""""""""""""""""""""""
+
+lua require('lsp_config').setup()
+lua require('noice_config').setup()
+lua require('comment_config').setup()
+lua require('telescope_config').setup()
+lua require('lsp_signature_config').setup()
+lua require('mason_config').setup()
+lua require('cmp_config').setup()
+lua require('nordic_config').setup()
+lua require('fterm_config').setup()
 
 """""""""""""""""""""""""""""""""""""""""""""
 "					See Char
@@ -184,7 +193,7 @@ set list
 "					ColorScheme
 """""""""""""""""""""""""""""""""""""""""""""
 
-colorscheme onenord
+colorscheme nordic
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = "nord_minimal"
 
@@ -199,7 +208,6 @@ set cursorline
 "              		 PATH
 """""""""""""""""""""""""""""""""""""""""""""
 
-let g:coc_node_path = '/home/rparodi/.nvm/versions/node/v22.1.0/bin/node'
 let g:copilot_node_path = '/home/rparodi/.nvm/versions/node/v22.1.0/bin/node'
 let g:tagbar_ctags_bin = '/usr/bin/ctags'
 
@@ -208,11 +216,3 @@ let g:tagbar_ctags_bin = '/usr/bin/ctags'
 """""""""""""""""""""""""""""""""""""""""""""
 
 autocmd VimEnter * TSToggle highlight
-
-lua require('lsp_config').setup()
-lua require('noice_config').setup()
-lua require('comment_config').setup()
-lua require('telescope_config').setup()
-lua require('lsp_signature_config').setup()
-lua require('mason_config').setup()
-lua require('cmp_config').setup()
