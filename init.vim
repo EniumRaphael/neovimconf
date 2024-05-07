@@ -26,6 +26,7 @@ set splitbelow
 set splitright
 set wildignorecase
 set scrolloff=3
+set clipboard+=unnamed,unnamedplus
 
 """""""""""""""""""""""""""""""""""""""""""""
 " 				Alias for MAJ 
@@ -59,6 +60,13 @@ nnoremap <C-s> <cmd>wa<cr>
 nnoremap <leader>w <cmd>wa<cr>
 nnoremap <leader>q 
 nnoremap <leader>Q <cmd>q<cr>
+
+"		For widows size
+nnoremap <C-Up>    <cmd>resize +2<CR>
+nnoremap <C-Down>  <cmd>resize -2<CR>
+nnoremap <C-Left>  <cmd>vertical resize -2<CR>
+nnoremap <C-Right> <cmd>vertical resize +2<CR>
+
 
 "		For moving between windows
 nnoremap <leader>1 <cmd>1tabnext<cr>
@@ -174,6 +182,7 @@ lua require('mason_config').setup()
 lua require('cmp_config').setup()
 lua require('nordic_config').setup()
 lua require('fterm_config').setup()
+lua require('trouble_config').setup()
 
 """""""""""""""""""""""""""""""""""""""""""""
 "					See Char
@@ -188,6 +197,9 @@ set list
 
 colorscheme nordic
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '>'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme = "nord_minimal"
 
 """""""""""""""""""""""""""""""""""""""""""""
