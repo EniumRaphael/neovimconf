@@ -1,13 +1,15 @@
 local lsp_config_lua = {}
 
 function lsp_config_lua.setup()
-    require('lspconfig')['clangd'].setup({
-        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.offsetEncoding = { "utf-16" }
+
+    require("lspconfig").clangd.setup({
+        capabilities = capabilities,
         on_attach = function(client, bufnr)
             local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
             local opts = { noremap=true, silent=true }
-            -- Binding LSP functions to keys
-            buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+            buf_set_keymap('n', '<C-LeftMouse>', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
             buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
         end
     })

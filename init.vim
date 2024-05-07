@@ -31,21 +31,21 @@ set scrolloff=3
 " 				Alias for MAJ 
 """""""""""""""""""""""""""""""""""""""""""""
 
-command! W <cmd>w
+command! W :w
 
-command! Q <cmd>q
+command! Q :q
 
-command! WA <cmd>wa
-command! Wa <cmd>wa
+command! WA :wa
+command! Wa :wa
 
-command! QA <cmd>qa
-command! Qa <cmd>qa
+command! QA :qa
+command! Qa :qa
 
-command! WQ <cmd>wq
-command! Wq <cmd>wq
+command! WQ :wq
+command! Wq :wq
 
-command! XA <cmd>xa
-command! Xa <cmd>xa
+command! XA :xa
+command! Xa :xa
 
 """""""""""""""""""""""""""""""""""""""""""""
 " 				MapLeader 
@@ -102,7 +102,7 @@ nnoremap <leader>dd <cmd>windo difft<cr>
 nnoremap <leader>do <cmd>diffo<cr>
 
 "		For the header
-nnoremap <F1> = <cmd><cmd>Stdheader<CR>
+nnoremap <F1> = <cmd>Stdheader<CR>
 
 "		Some random shortcut
 nnoremap ª <cmd>m .+1<CR>==
