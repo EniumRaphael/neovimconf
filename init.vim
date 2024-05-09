@@ -5,9 +5,7 @@
 "██	  ████   ██ ██      ██ ██   ██  ██████
 
 
-"""""""""""""""""""""""""""""""""""""""""""""
-" 				CLASSIC CONFIG 
-"""""""""""""""""""""""""""""""""""""""""""""
+"	CLASSIC CONFIG 
 
 syntax on
 
@@ -28,9 +26,7 @@ set wildignorecase
 set scrolloff=3
 set clipboard+=unnamed,unnamedplus
 
-"""""""""""""""""""""""""""""""""""""""""""""
-" 				Alias for MAJ 
-"""""""""""""""""""""""""""""""""""""""""""""
+"	Alias for MAJ 
 
 command! W :w
 
@@ -48,9 +44,12 @@ command! Wq :wq
 command! XA :xa
 command! Xa :xa
 
-"""""""""""""""""""""""""""""""""""""""""""""
-" 				MapLeader 
-"""""""""""""""""""""""""""""""""""""""""""""
+"	Alias to don't have the deleted things
+nnoremap dd "_dd
+nnoremap dw "_dw
+nnoremap d$ "_d$
+
+"	MapLeader 
 
 let mapleader=" "
 
@@ -62,10 +61,10 @@ nnoremap <leader>q 
 nnoremap <leader>Q <cmd>q<cr>
 
 "		For widows size
-nnoremap <C-Up>    <cmd>resize +2<CR>
-nnoremap <C-Down>  <cmd>resize -2<CR>
-nnoremap <C-Left>  <cmd>vertical resize -2<CR>
-nnoremap <C-Right> <cmd>vertical resize +2<CR>
+nnoremap <C-S-Up>    <cmd>resize +2<CR>
+nnoremap <C-S-Down>  <cmd>resize -2<CR>
+nnoremap <C-S-Left>  <cmd>vertical resize -2<CR>
+nnoremap <C-S-Right> <cmd>vertical resize +2<CR>
 
 
 "		For moving between windows
@@ -121,9 +120,7 @@ vnoremap ª <cmd>m '>+1<CR>gv=gvnnoremap <leader>o gT
 vnoremap º <cmd>m '<-2<CR>gv=gv
 onoremap ii ?if (<cr>jjdi{kkf(lci(
 
-"""""""""""""""""""""""""""""""""""""""""""""
-"              		 VIMPLUG 
-"""""""""""""""""""""""""""""""""""""""""""""
+"	 VIMPLUG 
 
 call plug#begin()
 	Plug 'AlexvZyl/nordic.nvim', { 'branch': 'main' }
@@ -170,9 +167,7 @@ call plug#begin()
 	Plug 'rcarriga/nvim-notify'
 call plug#end()
 
-"""""""""""""""""""""""""""""""""""""""""""""
-"					Loading lua
-"""""""""""""""""""""""""""""""""""""""""""""
+"	Loading lua
 
 lua require('clangdextension_config').setup()
 lua require('lsp_config').setup()
@@ -186,39 +181,29 @@ lua require('nordic_config').setup()
 lua require('fterm_config').setup()
 lua require('trouble_config').setup()
 
-"""""""""""""""""""""""""""""""""""""""""""""
-"					See Char
-"""""""""""""""""""""""""""""""""""""""""""""
+"	See Char
 
 set listchars=tab:▸\ ,eol:¬
 set list
 
-"""""""""""""""""""""""""""""""""""""""""""""
-"					ColorScheme
-"""""""""""""""""""""""""""""""""""""""""""""
+"	ColorScheme
 
 colorscheme nordic
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '>'
+let g:airline#extensions#tabline#left_sep = '〉'
+let g:airline#extensions#tabline#left_alt_set = '〉'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme = "nord_minimal"
 
-"""""""""""""""""""""""""""""""""""""""""""""
-"              		  CURSORLINE
-"""""""""""""""""""""""""""""""""""""""""""""
+"	CURSORLINE
 
 let g:airline_colornum_enabled = 1
 set cursorline
 
-"""""""""""""""""""""""""""""""""""""""""""""
-"              		 PATH
-"""""""""""""""""""""""""""""""""""""""""""""
+"	PATH
 
 let g:copilot_node_path = '~/.nvm/versions/node/v22.1.0/bin/node'
 
-"""""""""""""""""""""""""""""""""""""""""""""
-"              		 COLOR
-"""""""""""""""""""""""""""""""""""""""""""""
+"	COLOR
 
 autocmd VimEnter * TSToggle highlight
