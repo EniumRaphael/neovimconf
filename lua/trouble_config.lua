@@ -33,7 +33,7 @@ function trouble_config_lua.setup()
             toggle_fold = {"zA", "za"},
             previous = "k",
             next = "j",
-            help = "?"  -- Added the missing comma before this line
+            help = "?"
         },
         multiline = true,
         indent_lines = true,

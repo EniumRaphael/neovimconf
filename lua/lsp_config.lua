@@ -14,5 +14,4 @@ function lsp_config_lua.setup()
         end
     })
 end
-
 return lsp_config_lua

@@ -147,6 +147,7 @@ call plug#begin()
 	Plug 'hrsh7th/cmp-nvim-lsp'
 	Plug 'hrsh7th/cmp-buffer'
 	Plug 'hrsh7th/cmp-path'
+	Plug 'p00f/clangd_extensions.nvim'
 	Plug 'hrsh7th/cmp-cmdline'
 	Plug 'ray-x/lsp_signature.nvim'
 	Plug 'L3MON4D3/LuaSnip'
@@ -173,6 +174,7 @@ call plug#end()
 "					Loading lua
 """""""""""""""""""""""""""""""""""""""""""""
 
+lua require('clangdextension_config').setup()
 lua require('lsp_config').setup()
 lua require('noice_config').setup()
 lua require('comment_config').setup()
