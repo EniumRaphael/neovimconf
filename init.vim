@@ -25,6 +25,12 @@ set splitright
 set wildignorecase
 set scrolloff=3
 set clipboard+=unnamed,unnamedplus
+set columns=80
+set ignorecase
+set ruler
+
+let g:user42 = 'rparodi'
+let g:mail42 = 'rparodi@student.42.fr'
 
 "	Alias for MAJ 
 
@@ -48,7 +54,7 @@ command! Xa :xa
 nnoremap dd "_dd
 nnoremap dw "_dw
 nnoremap d$ "_d$
-
+nnoremap d "_d
 "	MapLeader 
 
 let mapleader=" "
@@ -61,9 +67,9 @@ nnoremap <leader>q 
 nnoremap <leader>Q <cmd>q<cr>
 
 "		For widows size
-nnoremap <C-S-Up>    <cmd>resize +2<CR>
-nnoremap <C-S-Down>  <cmd>resize -2<CR>
-nnoremap <C-S-Left>  <cmd>vertical resize -2<CR>
+nnoremap <C-S-Up> <cmd>resize +2<CR>
+nnoremap <C-S-Down> <cmd>resize -2<CR>
+nnoremap <C-S-Left> <cmd>vertical resize -2<CR>
 nnoremap <C-S-Right> <cmd>vertical resize +2<CR>
 
 
@@ -102,11 +108,13 @@ nnoremap <leader>N <cmd>!norminette
 nnoremap <leader>F <cmd>!find . -name "*.c" >> ./Makefile<cr>
 nnoremap <leader>m <cmd>!make -j<cr>
 nnoremap <leader>c <cmd>!copen<cr>
-nnoremap <leader>d :GdbStartLLDB lldb 
+nnoremap <leader>d :GdbStart gdb
 nnoremap <leader>M I#include <libc.h><cr><cr>int main(int argc, char *argv[], char *evnp[])<cr>{<cr>}<esc>ko
 nnoremap <leader>t <cmd>lua require("FTerm").toggle()<cr>
 nnoremap <leader>dd <cmd>windo difft<cr>
 nnoremap <leader>do <cmd>diffo<cr>
+nnoremap / /\v
+vnoremap / /\v
 
 "		For the header
 nnoremap <F1> = <cmd>Stdheader<CR>
@@ -123,7 +131,7 @@ onoremap ii ?if (<cr>jjdi{kkf(lci(
 "	 VIMPLUG 
 
 call plug#begin()
-	Plug 'AlexvZyl/nordic.nvim', { 'branch': 'main' }
+	Plug 'oxfist/night-owl.nvim'
 	Plug 'numToStr/FTerm.nvim'
 	Plug 'sakhnik/nvim-gdb'
 	Plug 'nvim-tree/nvim-web-devicons'
@@ -177,7 +185,7 @@ lua require('telescope_config').setup()
 lua require('lsp_signature_config').setup()
 lua require('mason_config').setup()
 lua require('cmp_config').setup()
-lua require('nordic_config').setup()
+lua require('nightowl_config').setup()
 lua require('fterm_config').setup()
 lua require('trouble_config').setup()
 
@@ -188,10 +196,10 @@ set list
 
 "	ColorScheme
 
-colorscheme nordic
+colorscheme night-owl
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = '〉'
-let g:airline#extensions#tabline#left_alt_set = '〉'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_set = '>'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme = "nord_minimal"
 

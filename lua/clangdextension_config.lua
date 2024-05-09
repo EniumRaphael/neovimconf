@@ -3,16 +3,16 @@ local clangdextension_config_lua = {}
 function clangdextension_config_lua.setup()
 	require('clangd_extensions').setup({
 		inlay_hints = {
-			inline = vim.fn.has("nvim-0.10") == 1,
+			inline = vim.fn.has("nvim-0.10") == 0,
 			only_current_line = false,
 			only_current_line_autocmd = { "CursorHold" },
 			show_parameter_hints = true,
-			parameter_hints_prefix = "	↼ ",
-			other_hints_prefix = "	⇀ ",
+			parameter_hints_prefix = "   ↼ ",
+			other_hints_prefix = "   ⇀ ",
 			max_len_align = true,
-			max_len_align_padding = 1,
+			max_len_align_padding = 4,
 			right_align = false,
-			right_align_padding = 7,
+			right_align_padding = 5,
 			highlight = "Comment",
 			priority = 100,
 		},
@@ -36,7 +36,7 @@ function clangdextension_config_lua.setup()
 			},
 			highlights = {
 				detail = "Comment",
-				},
+			},
 		},
 		memory_usage = {
 			border = "none",
