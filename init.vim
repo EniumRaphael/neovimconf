@@ -237,6 +237,7 @@ function! InsertHeaderGuard()
 endfunction
 
 "		Function for the git management
+
 function! CommitWithMessage()
     let commit_msg = input('Enter commit message: ')
     if len(commit_msg) == 0
@@ -266,6 +267,7 @@ endfunction
 
 function! StatusRepo()
     let status_list = systemlist('git status -s')
+
     let modified_staged = []
     let modified_unstaged = []
     let added_staged = []
@@ -277,37 +279,61 @@ function! StatusRepo()
     let untracked_files = []
 
     for line in status_list
-        if line[0] == 'M' && line[1] == ' '
+        if line[0:1] == 'M '
             call add(modified_staged, line[3:])
-        elseif line[0] == ' ' && line[1] == 'M'
+        elseif line[0:1] == ' M'
             call add(modified_unstaged, line[3:])
-        elseif line[0] == 'A' && line[1] == ' '
+        elseif line[0:1] == 'A '
             call add(added_staged, line[3:])
-        elseif line[0] == ' ' && line[1] == 'A'
+        elseif line[0:1] == ' A'
             call add(added_unstaged, line[3:])
-        elseif line[0] == 'D' && line[1] == ' '
+        elseif line[0:1] == 'D '
             call add(deleted_staged, line[3:])
-        elseif line[0] == ' ' && line[1] == 'D'
+        elseif line[0:1] == ' D'
             call add(deleted_unstaged, line[3:])
-        elseif line[0] == 'R' && line[1] == ' '
+        elseif line[0:1] == 'R '
             call add(renamed_staged, line[3:])
-        elseif line[0] == ' ' && line[1] == 'R'
+        elseif line[0:1] == ' R'
             call add(renamed_unstaged, line[3:])
-        elseif line =~ '^\?\?'
-            call add(untracked_files, line[3:])
         endif
     endfor
 
-	echo "Tracked files:"
-    echo join("Modified: ", join(modified_staged, "\n"))
-    echo join("Added: ", join(added_staged, "\n"))
-    echo join("Deleted: ", join(deleted_staged, "\n"))
-    echo join("Renamed: ", join(renamed_staged, "\n"))
-	
-	echo "Untracked files:"
-    echo join("Modified: ", join(modified_unstaged, "\n"))
-    echo join("Added: "join(added_unstaged, "\n"))
-    echo join("Deleted: ", join(deleted_unstaged, "\n"))
-    echo join("Renamed :", join(renamed_unstaged, "\n"))
-    echo join("Other :", join(untracked_files, "\n"))
+	echo ">  Staged Files:"
+    if !empty(modified_staged)
+        echo "- Modified:"
+        echo join(modified_staged, "\n")
+    endif
+
+    if !empty(added_staged)
+        echo "- Added:"
+        echo join(added_staged, "\n")
+    endif
+
+    if !empty(deleted_staged)
+        echo "- Deleted:"
+        echo join(deleted_staged, "\n")
+    endif
+
+    if !empty(renamed_staged)
+        echo "- Renamed:"
+        echo join(renamed_staged, "\n")
+    endif
+
+	echo ">  Unstaged Files"
+	if !empty(modified_unstaged)
+        echo "- Modified:"
+        echo join(modified_unstaged, "\n")
+    endif
+    if !empty(added_unstaged)
+        echo "- Added:"
+        echo join(added_unstaged, "\n")
+    endif
+    if !empty(deleted_unstaged)
+        echo "- Deleted but Unstaged Files:"
+        echo join(deleted_unstaged, "\n")
+    endif
+    if !empty(renamed_unstaged)
+        echo "- Renamed but Unstaged Files:"
+        echo join(renamed_unstaged, "\n")
+    endif
 endfunction
