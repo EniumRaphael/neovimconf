@@ -74,6 +74,11 @@ nnoremap <C-S-Down> <cmd>resize -2<CR>
 nnoremap <C-S-Left> <cmd>vertical resize -2<CR>
 nnoremap <C-S-Right> <cmd>vertical resize +2<CR>
 
+"		For Git management
+nnoremap <leader>ga <cmd>call AddingFiles()<cr>
+nnoremap <leader>gs <cmd>!git status -s<cr>
+nnoremap <leader>gc <cmd>call CommitWithMessage()<cr>
+nnoremap <leader>gp <cmd>!git push<cr>
 
 "		For moving between windows
 nnoremap <leader>1 <cmd>1tabnext<cr>
@@ -101,7 +106,7 @@ nnoremap <leader>h <cmd>split<cr>
 "		To navigate between files
 nnoremap <leader><space> <cmd>Neotree toggle<cr>
 nnoremap <leader>b <cmd>Telescope buffers prompt_prefix=📂:<cr>
-nnoremap <leader>g <cmd>Telescope live_grep prompt_prefix=🪄:<cr>
+nnoremap <leader>G <cmd>Telescope live_grep prompt_prefix=🪄:<cr>
 nnoremap <leader>f <cmd>Telescope find_files prompt_prefix=🔖:<cr>
 nnoremap <leader>T <cmd>Telescope<cr>
 
@@ -229,3 +234,33 @@ function! InsertHeaderGuard()
     let macro_name = substitute(toupper(expand('%:t')), '\.', '_', 'g')
     execute "normal! i#ifndef " . macro_name . "\<cr># define " . macro_name . "\<CR>\<CR>\<CR>#endif\<cr>\<Esc>:Stdheader\<cr>kkO"
 endfunction
+
+"		Function for the git management
+function! CommitWithMessage()
+    let commit_msg = input('Enter commit message: ')
+    if len(commit_msg) == 0
+        echo "Commit message cannot be empty!"
+        return
+    endif
+    execute '!git commit -m ' . shellescape(commit_msg)
+    if v:shell_error == 0
+        echo "Changes committed successfully."
+    else
+        echo "Failed to commit changes."
+    endif
+endfunction
+
+function! AddingFiles()
+    let commit_msg = input('Enter files to add:')
+    if len(commit_msg) == 0
+        return
+    endif
+    execute '!git add ' . shellescape(commit_msg)
+    if v:shell_error == 0
+        echo "Files added successfully."
+    else
+        echo "Failed to add the files."
+    endif
+endfunction
+
+
