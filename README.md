@@ -9,10 +9,14 @@ Here's a detailed breakdown of the key bindings, prerequisites, and plugins base
 
 To use this Neovim configuration effectively, you will need:
 
-- **Neovim (v0.5.0 or newer)**: Ensure you have the latest version to support all features, especially Treesitter and LSP integration.
+- **Neovim (v0.10.0)**: Ensure you have the latest version to support all features, especially Treesitter and LSP integration.
 - **Python3**: Required for plugins that depend on Python scripting support.
 - **Node.js and npm**: Needed for installing and running JavaScript-based tools and language servers (use nvm for 42).
 - **Git**: Necessary for installing some plugins and managing versions.
+- **Vim Plug**: Permit to install all plugins.
+```shell
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
 
 ## Key Bindings
 
@@ -34,9 +38,10 @@ This configuration includes several key mappings designed to enhance productivit
 
 - **Code and Tools**:
   - `<F1>`: Apply 42 header.
+  - `<leader>h`: Adding the header `.h`.
   - `<leader>N`: Run code norminette.
   - `<leader>F`: Find all `.c` files and append to `Makefile`.
-  - `<leader>m`: Run make with parallel jobs.
+  - `<leader>m`: Run make.
   - `<leader>c`: Open the compilation output window.
   - `<leader>d`: Start LLDB for debugging.
   - `<leader>t`: Toggle the terminal window.
@@ -45,12 +50,19 @@ This configuration includes several key mappings designed to enhance productivit
   - `Ctrl+/`: Comment single lines.
   - `<space>+/`: Comment in blocks.
 
+- **Git**:
+  - `<leader>ga`: Adding the file to stagged status.
+  - `<leader>gm`: Adding a commit to your repo.
+  - `<leader>gc`: Adding a commit to your repo.
+  - `<leader>gp`: Pushing to git.
+  - `<leader>gs`: Show the status of your repo.
+
 - **Plugin Specific**:
   - `<leader>X`: Disable Copilot.
   - `<leader>Z`: Enable Copilot.
   - `<leader><space>`: Toggle Neotree file explorer.
   - `<leader>b`: Open Telescope buffer search.
-  - `<leader>g`: Open Telescope live grep.
+  - `<leader>G`: Open Telescope live grep.
   - `<leader>f`: Open Telescope file finder.
   - `<leader>T`: Trigger Telescope.
 
