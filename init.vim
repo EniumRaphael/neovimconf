@@ -51,10 +51,12 @@ command! XA :xa
 command! Xa :xa
 
 "	Alias to don't have the deleted things
+
 nnoremap dd "_dd
 nnoremap dw "_dw
 nnoremap d$ "_d$
 nnoremap d "_d
+
 "	MapLeader 
 
 let mapleader=" "
@@ -127,6 +129,9 @@ inoremap º <Esc><cmd>m .-2<CR>==gi
 vnoremap ª <cmd>m '>+1<CR>gv=gvnnoremap <leader>o gT
 vnoremap º <cmd>m '<-2<CR>gv=gv
 onoremap ii ?if (<cr>jjdi{kkf(lci(
+
+" Map the function to a key combination, e.g., <leader>h
+nnoremap <leader>h :call InsertHeaderGuard()<CR>
 
 "	 VIMPLUG 
 
@@ -203,6 +208,8 @@ let g:airline#extensions#tabline#left_alt_set = '>'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme = "nord_minimal"
 
+let g:colors_name = "nord_minimal"
+
 "	CURSORLINE
 
 let g:airline_colornum_enabled = 1
@@ -210,8 +217,15 @@ set cursorline
 
 "	PATH
 
-let g:copilot_node_path = '~/.nvm/versions/node/v22.1.0/bin/node'
+" let g:copilot_node_path = '~/.nvm/versions/node/v22.1.0/bin/node'
 
 "	COLOR
 
-autocmd VimEnter * TSToggle highlight
+ autocmd VimEnter * TSToggle highlight
+
+"	Function for the header
+
+function! InsertHeaderGuard()
+    let macro_name = substitute(toupper(expand('%:t')), '\.', '_', 'g')
+    execute "normal! i#ifndef " . macro_name . "\<cr># define " . macro_name . "\<CR>\<CR>\<CR>#endif\<cr>\<Esc>:Stdheader\<cr>kkO"
+endfunction
