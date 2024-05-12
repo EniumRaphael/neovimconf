@@ -52,10 +52,20 @@ command! Xa :xa
 
 "	Alias to don't have the deleted things
 
+nnoremap d "_d
 nnoremap dd "_dd
 nnoremap dw "_dw
 nnoremap d$ "_d$
-nnoremap d "_d
+
+vnoremap dd "_dd
+vnoremap dw "_dw
+vnoremap d$ "_d$
+vnoremap d "_d
+
+xnoremap dd "_dd
+xnoremap dw "_dw
+xnoremap d$ "_d$
+xnoremap d "_d
 
 "	MapLeader 
 
@@ -105,6 +115,8 @@ nnoremap <leader>v <cmd>vsplit<cr>
 nnoremap <leader>h <cmd>split<cr>
 
 "		To navigate between files
+        " elseif line =~ '^\?\?'
+        "     call add(untracked_files, line[3:])
 nnoremap <leader><space> <cmd>Neotree toggle<cr>
 nnoremap <leader>b <cmd>Telescope buffers prompt_prefix=📂:<cr>
 nnoremap <leader>G <cmd>Telescope live_grep prompt_prefix=🪄:<cr>
