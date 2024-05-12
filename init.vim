@@ -76,7 +76,8 @@ nnoremap <C-S-Right> <cmd>vertical resize +2<CR>
 
 "		For Git management
 nnoremap <leader>ga <cmd>call AddingFiles()<cr>
-nnoremap <leader>gs <cmd>!git status -s<cr>
+nnoremap <leader>gs <cmd>call StatusRepo()<cr>
+nnoremap <leader>gm <cmd>call CommitWithMessage()<cr>
 nnoremap <leader>gc <cmd>call CommitWithMessage()<cr>
 nnoremap <leader>gp <cmd>!git push<cr>
 
@@ -263,4 +264,50 @@ function! AddingFiles()
     endif
 endfunction
 
+function! StatusRepo()
+    let status_list = systemlist('git status -s')
+    let modified_staged = []
+    let modified_unstaged = []
+    let added_staged = []
+    let added_unstaged = []
+    let deleted_staged = []
+    let deleted_unstaged = []
+    let renamed_staged = []
+    let renamed_unstaged = []
+    let untracked_files = []
 
+    for line in status_list
+        if line[0] == 'M' && line[1] == ' '
+            call add(modified_staged, line[3:])
+        elseif line[0] == ' ' && line[1] == 'M'
+            call add(modified_unstaged, line[3:])
+        elseif line[0] == 'A' && line[1] == ' '
+            call add(added_staged, line[3:])
+        elseif line[0] == ' ' && line[1] == 'A'
+            call add(added_unstaged, line[3:])
+        elseif line[0] == 'D' && line[1] == ' '
+            call add(deleted_staged, line[3:])
+        elseif line[0] == ' ' && line[1] == 'D'
+            call add(deleted_unstaged, line[3:])
+        elseif line[0] == 'R' && line[1] == ' '
+            call add(renamed_staged, line[3:])
+        elseif line[0] == ' ' && line[1] == 'R'
+            call add(renamed_unstaged, line[3:])
+        elseif line =~ '^\?\?'
+            call add(untracked_files, line[3:])
+        endif
+    endfor
+
+	echo "Tracked files:"
+    echo join("Modified: ", join(modified_staged, "\n"))
+    echo join("Added: ", join(added_staged, "\n"))
+    echo join("Deleted: ", join(deleted_staged, "\n"))
+    echo join("Renamed: ", join(renamed_staged, "\n"))
+	
+	echo "Untracked files:"
+    echo join("Modified: ", join(modified_unstaged, "\n"))
+    echo join("Added: "join(added_unstaged, "\n"))
+    echo join("Deleted: ", join(deleted_unstaged, "\n"))
+    echo join("Renamed :", join(renamed_unstaged, "\n"))
+    echo join("Other :", join(untracked_files, "\n"))
+endfunction
