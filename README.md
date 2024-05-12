@@ -14,7 +14,8 @@ To use this Neovim configuration effectively, you will need:
 - **Node.js and npm**: Needed for installing and running JavaScript-based tools and language servers (use nvm for 42).
 - **Git**: Necessary for installing some plugins and managing versions.
 - **Vim Plug**: Permit to install all plugins.
-```shell
+```sh
+# For install vim-plug
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
