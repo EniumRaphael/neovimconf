@@ -265,7 +265,7 @@ function! CommitWithMessage()
 endfunction
 
 function! AddingFiles()
-    let commit_msg = input('Enter files to add:')
+    let commit_msg = input('Enter files to add: ')
     if len(commit_msg) == 0
         return
     endif
