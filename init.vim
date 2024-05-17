@@ -182,7 +182,6 @@ call plug#begin()
 	Plug 'rafamadriz/friendly-snippets'
 	Plug 'saadparwaiz1/cmp_luasnip'
 	Plug 'williamboman/mason.nvim'
-	Plug 'myusuf3/numbers.vim'
 	Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 	Plug 'folke/trouble.nvim'
 	Plug 'scrooloose/syntastic'
