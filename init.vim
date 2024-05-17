@@ -107,8 +107,9 @@ nnoremap <leader>o gT
 nnoremap <leader>p gt
 
 "		For Copilot
-nnoremap <leader>X <cmd>Copilot disable<cr>
-nnoremap <leader>Z <cmd>Copilot enable<cr>
+nnoremap <leader>X <cmd>Copilot disable<cr> <cmd>lua vim.notify("Copilot disable !", "info")<cr>
+nnoremap <leader>Z <cmd>Copilot enable<cr> <cmd>lua vim.notify("Copilot enable !", "info")<cr>
+
 
 "		For buffer
 nnoremap <leader>v <cmd>vsplit<cr>
@@ -234,7 +235,7 @@ set cursorline
 
 "	PATH
 
-" let g:copilot_node_path = '~/.nvm/versions/node/v22.1.0/bin/node'
+let g:copilot_node_path = '~/.nvm/versions/node/v22.1.0/bin/node'
 
 "	COLOR
 
