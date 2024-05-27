@@ -107,17 +107,14 @@ nnoremap <leader>o gT
 nnoremap <leader>p gt
 
 "		For Copilot
-nnoremap <leader>X <cmd>Copilot disable<cr> <cmd>lua vim.notify("Copilot disable !", "info")<cr>
-nnoremap <leader>Z <cmd>Copilot enable<cr> <cmd>lua vim.notify("Copilot enable !", "info")<cr>
-
+nnoremap <leader>X <cmd>Copilot disable<cr>
+nnoremap <leader>Z <cmd>Copilot enable<cr>
 
 "		For buffer
 nnoremap <leader>v <cmd>vsplit<cr>
 nnoremap <leader>h <cmd>split<cr>
 
 "		To navigate between files
-        " elseif line =~ '^\?\?'
-        "     call add(untracked_files, line[3:])
 nnoremap <leader><space> <cmd>Neotree toggle<cr>
 nnoremap <leader>b <cmd>Telescope buffers prompt_prefix=📂:<cr>
 nnoremap <leader>G <cmd>Telescope live_grep prompt_prefix=🪄:<cr>
@@ -155,7 +152,7 @@ nnoremap <leader>h :call InsertHeaderGuard()<CR>
 "	 VIMPLUG 
 
 call plug#begin()
-	Plug 'oxfist/night-owl.nvim'
+	Plug 'nordtheme/vim'
 	Plug 'numToStr/FTerm.nvim'
 	Plug 'sakhnik/nvim-gdb'
 	Plug 'nvim-tree/nvim-web-devicons'
@@ -183,6 +180,7 @@ call plug#begin()
 	Plug 'rafamadriz/friendly-snippets'
 	Plug 'saadparwaiz1/cmp_luasnip'
 	Plug 'williamboman/mason.nvim'
+	Plug 'myusuf3/numbers.vim'
 	Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 	Plug 'folke/trouble.nvim'
 	Plug 'scrooloose/syntastic'
@@ -208,7 +206,6 @@ lua require('telescope_config').setup()
 lua require('lsp_signature_config').setup()
 lua require('mason_config').setup()
 lua require('cmp_config').setup()
-lua require('nightowl_config').setup()
 lua require('fterm_config').setup()
 lua require('trouble_config').setup()
 
@@ -219,7 +216,7 @@ set list
 
 "	ColorScheme
 
-colorscheme night-owl
+colorscheme nord
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_set = '>'
@@ -235,7 +232,7 @@ set cursorline
 
 "	PATH
 
-let g:copilot_node_path = '~/.nvm/versions/node/v22.1.0/bin/node'
+" let g:copilot_node_path = '~/.nvm/versions/node/v22.1.0/bin/node'
 
 "	COLOR
 
