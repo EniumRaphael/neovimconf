@@ -214,16 +214,26 @@ lua require('trouble_config').setup()
 set listchars=tab:▸\ ,eol:¬
 set list
 
-"	ColorScheme
+"       ColorScheme
 
 colorscheme nord
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_set = '>'
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_theme = "nord_minimal"
 
+let g:tmuxline_theme = 'iceberg'
+let g:tmuxline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '〉',
+    \ 'right' : '',
+    \ 'right_alt' : '⟨',
+    \ 'space' : ' '}
+
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '〉'
+let g:airline_theme = "nord_minimal"
 let g:colors_name = "nord_minimal"
+
 
 "	CURSORLINE
 
