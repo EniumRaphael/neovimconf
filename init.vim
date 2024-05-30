@@ -157,7 +157,6 @@ call plug#begin()
 	Plug 'sakhnik/nvim-gdb'
 	Plug 'nvim-tree/nvim-web-devicons'
 	Plug 'nvim-lua/plenary.nvim'
-	Plug 'edkolev/tmuxline.vim'
 	Plug 'numToStr/Comment.nvim'
 	Plug 'sainnhe/edge'
 	Plug 'rafamadriz/friendly-snippets'
@@ -217,15 +216,6 @@ set list
 "       ColorScheme
 
 colorscheme nord
-
-let g:tmuxline_theme = 'iceberg'
-let g:tmuxline_separators = {
-    \ 'left' : '',
-    \ 'left_alt': '〉',
-    \ 'right' : '',
-    \ 'right_alt' : '⟨',
-    \ 'space' : ' '}
-
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
