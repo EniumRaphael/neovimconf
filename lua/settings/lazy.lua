@@ -3,7 +3,6 @@ if vim.loop.fs_stat(lazypath) then
   vim.fn.system({"git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath})
 end
 vim.opt.rtp:prepend(lazypath)
-
 local lazy = {}
 function lazy.setup()
 	require("lazy").setup({
@@ -38,8 +37,11 @@ function lazy.setup()
 		{ "nvim-telescope/telescope.nvim", tag = "0.1.5", config = function() require('plugins.telescope_config').setup() end },
 		{ "folke/noice.nvim", config = function() require('plugins.noice_config').setup() end },
 		{ "github/copilot.vim" },
-		{ "rcarriga/nvim-notify" }
-	})
+		{ "rcarriga/nvim-notify" },
+		{ "nvim-lualine/lualine.nvim", config = function() require('lualine').setup { options = { theme = 'nord' } } end },
+		{ "folke/which-key.nvim", config = function() require("which-key").setup {} end },
+		{ "windwp/nvim-autopairs", config = function() require('nvim-autopairs').setup() end },
+})
 end
 
 return lazy
