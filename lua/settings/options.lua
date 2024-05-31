@@ -1,6 +1,7 @@
 local options = {}
 
 function options.setup()
+	vim.opt.termguicolors = true
 	vim.opt.syntax = "on"
 	vim.opt.linebreak = true
 	vim.opt.wrap = false
@@ -29,4 +30,3 @@ function options.setup()
 end
 
 return options
-
