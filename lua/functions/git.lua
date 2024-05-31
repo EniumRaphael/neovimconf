@@ -14,7 +14,7 @@ function git.commit_with_message()
     end
 end
 
-function M.adding_files()
+function git.adding_files()
     local files = vim.fn.input('Enter files to add: ')
     if #files == 0 then
         return
