@@ -83,8 +83,8 @@ function keymaps.speedup()
 	map('n', '<leader>t', '<cmd>lua require("FTerm").toggle()<CR>')
 	map('n', '<leader>dd', '<cmd>windo difft<CR>')
 	map('n', '<leader>do', '<cmd>diffo<CR>')
-	map('n', '/', '/\\v')
-	map('v', '/', '/\\v')
+	map('n', '?', '/\\v')
+	map('v', '?', '/\\v')
 end
 
 function keymaps.header()

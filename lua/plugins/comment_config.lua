@@ -6,17 +6,17 @@ function comment_config_lua.setup()
 		sticky = true,
 		ignore = nil,
 		toggler = {
-			line = '<C-/>',
-			block = ' /',
+			line = '<C-_>',
+			block = ' _',
 		},
 		opleader = {
-			line = '<C-/>',
-			block = ' /',
+			line = '<C-_>',
+			block = ' _',
 		},
 		extra = {
-			above = '<C-?><Up>',
-			below = '<C-?><Down>',
-			eol = '<C-?><Left>',
+			above = '<C-+><Up>',
+			below = '<C-+><Down>',
+			eol = '<C-+><Left>',
 		},
 		mappings = {
 			basic = true,
