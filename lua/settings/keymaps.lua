@@ -69,7 +69,9 @@ end
 
 function keymaps.files()
 	map('n', '<leader><space>', '<cmd>Neotree toggle<CR>')
-	map('n', '<leader>f', '<cmd>Telescope find_files prompt_prefix=🔖:<CR>')
+	map('n', '<leader>f', '<cmd>Telescope find_files prompt_prefix=📂:<CR>')
+	map('n', '<leader>b', '<cmd>Telescope buffers prompt_prefix=🔖:<CR>')
+	map('n', '<leader>g', '<cmd>Telescope live_grep prompt_prefix=🪄:<CR>')
 	map('n', '<leader>T', '<cmd>Telescope<CR>')
 end
 
@@ -83,8 +85,8 @@ function keymaps.speedup()
 	map('n', '<leader>t', '<cmd>lua require("FTerm").toggle()<CR>')
 	map('n', '<leader>dd', '<cmd>windo difft<CR>')
 	map('n', '<leader>do', '<cmd>diffo<CR>')
-	map('n', '?', '/\\v')
-	map('v', '?', '/\\v')
+	map('n', '/', '/\\v')
+	map('v', '/', '/\\v')
 end
 
 function keymaps.header()

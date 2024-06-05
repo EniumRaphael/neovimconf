@@ -27,9 +27,6 @@ function lazy.setup()
 			end 
 		},
 		{
-			"sakhnik/nvim-gdb"
-		},
-		{
 			"nvim-lua/plenary.nvim"
 		},
 		{
@@ -79,14 +76,6 @@ function lazy.setup()
 			"github/Copilot.vim"
 		},
 		{
-			"folke/which-key.nvim",
-			event = "VeryLazy",
-			init = function()
-				vim.o.timeout = true
-				vim.o.timeoutlen = 300
-			end,
-		},
-		{
 			"CopilotC-Nvim/CopilotChat.nvim",
 			branch = "canary",
 			dependencies = {
@@ -130,10 +119,6 @@ function lazy.setup()
 		},
 		{
 			"myusuf3/numbers.vim"
-		},
-		{
-			"mg979/vim-visual-multi",
-			branch = "master"
 		},
 		{
 			"folke/trouble.nvim",
