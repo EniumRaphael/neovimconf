@@ -16,9 +16,10 @@ function lazy.setup()
 				} 
 			end 
 		},
-		{ 
-			"nordtheme/vim",
-			run = ":colorscheme nord"
+		{
+			"catppuccin/nvim",
+			name = "catppuccin",
+			priority = 1000
 		},
 		{
 			"numToStr/FTerm.nvim",

@@ -24,7 +24,7 @@ function options.setup()
 	vim.g.user42 = 'rparodi'
 	vim.g.mail42 = 'rparodi@student.42.fr'
 	vim.g.mapleader = " "
-	vim.cmd("colorscheme nord")
+	vim.cmd("colorscheme catppuccin-mocha")
 	vim.opt.listchars = { eol = '↵', tab = '→ ' }
 	vim.opt.list = true
 end
