@@ -20,7 +20,7 @@ function catppuccin_config_lua.setup()
 		no_underline = false,
 		styles = {
 			comments = {},
-			conditionals = { "italic" },
+			conditionals = {},
 			loops = {},
 			functions = {},
 			keywords = {},
