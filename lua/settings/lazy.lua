@@ -77,15 +77,6 @@ function lazy.setup()
 			"github/Copilot.vim"
 		},
 		{
-			"CopilotC-Nvim/CopilotChat.nvim",
-			branch = "canary",
-			dependencies = {
-				{ "zbirenbaum/copilot.lua" },
-				{ "nvim-lua/plenary.nvim" },
-			},
-			opts = { debug = true },
-		},
-		{
 			"hrsh7th/cmp-buffer"
 		},
 		{
@@ -155,7 +146,7 @@ function lazy.setup()
 				require('lualine').setup
 				{
 					options = {
-						theme = 'nord'
+						theme = 'catppuccin'
 					}
 				}
 			end
