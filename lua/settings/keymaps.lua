@@ -37,29 +37,19 @@ function keymaps.window()
 end
 
 function keymaps.git()
-	map('n', '<leader>ga', '<cmd>lua require("functions.git").adding_files()<CR>')
-	map('n', '<leader>gs', '<cmd>lua require("functions.git").status_repo()<CR>')
-	map('n', '<leader>gm', '<cmd>lua require("functions.git").commit_with_message()<CR>')
-	map('n', '<leader>gc', '<cmd>lua require("functions.git").commit_with_message()<CR>')
-	map('n', '<leader>gp', '<cmd>!git push<CR>')
-end
-
-function keymaps.copilot()
-	map('n', '<leader>X', '<cmd>Copilot disable<CR>')
-	map('n', '<leader>Z', '<cmd>Copilot enable<CR>')
+	map('n', '<leader>Ga', '<cmd>lua require("functions.git").adding_files()<CR>')
+	map('n', '<leader>Gs', '<cmd>lua require("functions.git").status_repo()<CR>')
+	map('n', '<leader>Gm', '<cmd>lua require("functions.git").commit_with_message()<CR>')
+	map('n', '<leader>Gc', '<cmd>lua require("functions.git").commit_with_message()<CR>')
+	map('n', '<leader>Gp', '<cmd>!git push<CR>')
 end
 
 function keymaps.tabs()
-	map('n', '<leader>1', '<cmd>1tabnext<CR>')
-	map('n', '<leader>2', '<cmd>2tabnext<CR>')
-	map('n', '<leader>3', '<cmd>3tabnext<CR>')
-	map('n', '<leader>4', '<cmd>4tabnext<CR>')
-	map('n', '<leader>5', '<cmd>5tabnext<CR>')
-	map('n', '<leader>6', '<cmd>6tabnext<CR>')
-	map('n', '<leader>7', '<cmd>7tabnext<CR>')
-	map('n', '<leader>8', '<cmd>8tabnext<CR>')
-	map('n', '<leader>9', '<cmd>9tabnext<CR>')
-	map('n', '<leader>0', '<cmd>10tabnext<CR>')
+	map("n", "<C-S-Tab>", "<Plug>(cokeline-focus-prev)", { silent = true })
+	map("n", "<C-Tab>", "<Plug>(cokeline-focus-next)", { silent = true })
+	for i = 1, 9 do
+		map("n", ("<Leader>%s"):format(i), ("<Plug>(cokeline-focus-%s)"):format(i))
+	end
 	map('n', '<leader>n', '<cmd>tabnew<CR>')
 	map('n', '<leader>o', 'gT')
 	map('n', '<leader>p', 'gt')
@@ -76,6 +66,7 @@ function keymaps.files()
 end
 
 function keymaps.speedup()
+	map('n', '<C-S-N>', '<cmd>CFormatter42<CR>')
 	map('n', '<esc><esc>', '<cmd>nohl<CR>')
 	map('n', '<leader>N', '<cmd>!norminette<CR>')
 	map('n', '<leader>F', '<cmd>!find . -name "*.c" >> ./Makefile<CR>')
@@ -98,7 +89,6 @@ function keymaps.setup()
 	keymaps.saves()
 	keymaps.window()
 	keymaps.git()
-	keymaps.copilot()
 	keymaps.tabs()
 	keymaps.files()
 	keymaps.speedup()
@@ -106,4 +96,3 @@ function keymaps.setup()
 end
 
 return keymaps
-
