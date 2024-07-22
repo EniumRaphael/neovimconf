@@ -66,8 +66,7 @@ function keymaps.files()
 end
 
 function keymaps.speedup()
-	map('n', '<C-S-N>', '<cmd>CFormatter42<CR>')
-	map('n', '<esc><esc>', '<cmd>nohl<CR>')
+	map('n', '<leader><esc>', '<cmd>nohl<CR>')
 	map('n', '<leader>N', '<cmd>!norminette<CR>')
 	map('n', '<leader>F', '<cmd>!find . -name "*.c" >> ./Makefile<CR>')
 	map('n', '<leader>m', '<cmd>!make -j<CR>')
