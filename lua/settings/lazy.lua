@@ -23,6 +23,13 @@ function lazy.setup()
 				require('plugins.catppuccin_config').setup()
 			end
 		},
+		{ 
+			'IogaMaster/neocord',
+			event = "VeryLazy",
+			config = function()
+				require('plugins.neocord_config').setup()
+			end
+		},
 		{
 			"numToStr/FTerm.nvim",
 			config = function()
