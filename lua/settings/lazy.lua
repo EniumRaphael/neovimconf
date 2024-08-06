@@ -83,9 +83,6 @@ function lazy.setup()
 			"hrsh7th/cmp-nvim-lsp"
 		},
 		{
-			"github/Copilot.vim"
-		},
-		{
 			"hrsh7th/cmp-buffer"
 		},
 		{
