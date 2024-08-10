@@ -66,6 +66,10 @@ function keymaps.files()
 end
 
 function keymaps.speedup()
+	map('i', '<C-h>', '<Left>')
+	map('i', '<C-j>', '<Down>')
+	map('i', '<C-k>', '<Up>')
+	map('i', '<C-l>', '<Right>')
 	map('n', '<leader><esc>', '<cmd>nohl<CR>')
 	map('n', '<leader>N', '<cmd>!norminette<CR>')
 	map('n', '<leader>F', '<cmd>!find . -name "*.c" >> ./Makefile<CR>')
