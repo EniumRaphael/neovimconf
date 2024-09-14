@@ -20,6 +20,9 @@ function lazy.setup()
 				"danymat/neogen", 
 				config = true,
 		},
+		{
+			"RRethy/vim-illuminate",
+		},
 		-- {
 		-- 	"m4xshen/hardtime.nvim",
 		-- 	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
