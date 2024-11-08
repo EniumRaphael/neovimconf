@@ -5,6 +5,9 @@ function lsp_config_lua.setup()
 	capabilities.offsetEncoding = { "utf-16" }
 
 	require("lspconfig").clangd.setup({
+		cmd = { "clangd" },
+		filetypes = { "c", "cpp" },
+		root_dir = require('lspconfig').util.root_pattern(".clangd", "compile_commands.json", ".git"),
 		capabilities = capabilities,
 		on_attach = function(client, bufnr)
 			local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end

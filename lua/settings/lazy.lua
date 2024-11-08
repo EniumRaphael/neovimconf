@@ -132,9 +132,6 @@ function lazy.setup()
 			end
 		},
 		{
-			"myusuf3/numbers.vim"
-		},
-		{
 			"folke/trouble.nvim",
 			config = function()
 				require('plugins.trouble_config').setup()
