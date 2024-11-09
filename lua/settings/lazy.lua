@@ -17,11 +17,17 @@ function lazy.setup()
 			end 
 		},
 		{
-				"danymat/neogen", 
-				config = true,
+			"danymat/neogen", 
+			config = true,
 		},
 		{
 			"RRethy/vim-illuminate",
+		},
+		{
+			"simrat39/rust-tools.nvim",
+			config = function()
+				require('plugins.rust_analyser_config').setup()
+			end
 		},
 		-- {
 		-- 	"m4xshen/hardtime.nvim",
@@ -104,12 +110,12 @@ function lazy.setup()
 		{
 			"hrsh7th/cmp-path"
 		}, 
-		{
-			"p00f/clangd_extensions.nvim",
-			config = function()
-				require('plugins.clangdextension_config').setup()
-			end
-		},
+		-- {
+		-- 	"p00f/clangd_extensions.nvim",
+		-- 	config = function()
+		-- 		require('plugins.clangdextension_config').setup()
+		-- 	end
+		-- },
 		{
 			"hrsh7th/cmp-cmdline"
 		},

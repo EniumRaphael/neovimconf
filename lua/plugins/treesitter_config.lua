@@ -4,7 +4,6 @@ function treesitter_config_lua.setup()
 	require'nvim-treesitter.configs'.setup {
 		ensure_installed = "all", -- Automatically install all available parsers
 		sync_install = false,    -- Install parsers synchronously (only use if you experience issues)
-		ignore_install = { "javascript" }, -- List parsers you don't want to automatically install
 		highlight = {
 			enable = true,              -- Enable Tree-sitter based highlighting
 			additional_vim_regex_highlighting = false,
