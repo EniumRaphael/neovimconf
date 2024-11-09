@@ -3,7 +3,7 @@ local clangdextension_config_lua = {}
 function clangdextension_config_lua.setup()
 	require('clangd_extensions').setup({
 		inlay_hints = {
-			inline = vim.fn.has("nvim-0.10") == 0,
+			inline = vim.fn.has("nvim-0.10") == 1,
 			only_current_line = false,
 			only_current_line_autocmd = { "CursorHold" },
 			show_parameter_hints = true,

@@ -66,7 +66,7 @@ function keymaps.files()
 end
 
 function keymaps.speedup()
-	map('n', '<leader>i', 'lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enable())')
+	map('n', '<leader>i', '<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enable())<cr>')
 	map('i', '<C-h>', '<Left>')
 	map('i', '<C-j>', '<Down>')
 	map('i', '<C-k>', '<Up>')

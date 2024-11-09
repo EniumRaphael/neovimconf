@@ -110,12 +110,12 @@ function lazy.setup()
 		{
 			"hrsh7th/cmp-path"
 		}, 
-		-- {
-		-- 	"p00f/clangd_extensions.nvim",
-		-- 	config = function()
-		-- 		require('plugins.clangdextension_config').setup()
-		-- 	end
-		-- },
+		{
+			"p00f/clangd_extensions.nvim",
+			config = function()
+				require('plugins.clangdextension_config').setup()
+			end
+		},
 		{
 			"hrsh7th/cmp-cmdline"
 		},
