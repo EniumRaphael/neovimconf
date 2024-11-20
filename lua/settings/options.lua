@@ -6,6 +6,7 @@ function options.setup()
 	vim.opt.linebreak = true
 	vim.opt.wrap = false
 	vim.opt.ruler = true
+	vim.opt.relativenumber = true
 	vim.opt.number = true
 	vim.opt.showmatch = true
 	vim.opt.swapfile = false
