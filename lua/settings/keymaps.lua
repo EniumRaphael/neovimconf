@@ -59,9 +59,9 @@ end
 
 function keymaps.files()
 	map('n', '<leader><space>', '<cmd>Neotree toggle<CR>')
-	map('n', '<leader>f', '<cmd>Telescope find_files prompt_prefix=📂:<CR>')
-	map('n', '<leader>b', '<cmd>Telescope buffers prompt_prefix=🔖:<CR>')
-	map('n', '<leader>g', '<cmd>Telescope live_grep prompt_prefix=🪄:<CR>')
+	map('n', '<leader>ff', '<cmd>Telescope find_files prompt_prefix=📂:<CR>')
+	map('n', '<leader>fb', '<cmd>Telescope buffers prompt_prefix=🔖:<CR>')
+	map('n', '<leader>fg', '<cmd>Telescope live_grep prompt_prefix=🪄:<CR>')
 	map('n', '<leader>T', '<cmd>Telescope<CR>')
 end
 

@@ -49,9 +49,9 @@ This configuration includes several key mappings designed to enhance productivit
   - `<leader>X`: Disable Copilot.
   - `<leader>Z`: Enable Copilot.
   - `<leader><space>`: Toggle Neotree file explorer.
-  - `<leader>b`: Open Telescope buffer search.
-  - `<leader>g`: Open Telescope live grep.
-  - `<leader>f`: Open Telescope file finder.
+  - `<leader>fb`: Open Telescope buffer search.
+  - `<leader>fg`: Open Telescope live grep.
+  - `<leader>ff`: Open Telescope file finder.
   - `<leader>T`: Trigger Telescope.
 
 ## Plugins
